@@ -1,0 +1,87 @@
+.heroContainer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.videoWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.bgVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: opacity;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+  z-index: 3; /* acima dos vídeos */
+}
+
+.content {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  padding: 0 var(--spacing-md);
+}
+
+.title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.title span {
+  display: block;
+  background: linear-gradient(180deg, #ffffff 0%, #c4d4f2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0px 4px 25px rgba(139, 178, 248, 0.2);
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.bottomFade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(to bottom, transparent, var(--color-bg-dark));
+  z-index: 5;
+  pointer-events: none;
+}

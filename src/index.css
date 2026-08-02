@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;700&display=swap');
+
+:root {
+  /* Cores extraídas do vídeo e adaptadas para alto contraste */
+  --color-bg-dark: #0f1115; /* Versão muito escura de #3b3f46 */
+  --color-primary: #3b3f46;
+  --color-secondary: #5e6572;
+  --color-accent: #8bb2f8; /* Azul-claro extraído do vídeo */
+  --color-blue-glow: rgba(139, 178, 248, 0.15);
+  --color-text-main: #ffffff;
+  --color-text-muted: #949ba8; /* Um pouco mais claro/azulado que o cinza anterior */
+  
+  --font-main: 'Outfit', sans-serif;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+  --spacing-xxl: 8rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}

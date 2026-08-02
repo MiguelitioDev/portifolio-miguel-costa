@@ -1,0 +1,133 @@
+.section {
+  padding: var(--spacing-xxl) var(--spacing-md);
+  position: relative;
+  z-index: 10;
+  color: var(--color-text-main);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--color-text-main);
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-lg);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: var(--spacing-sm);
+}
+
+.legend {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  background: rgba(255,255,255,0.03);
+  padding: 12px 24px;
+  border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.statusDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.techItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  background: var(--color-primary);
+  padding: var(--spacing-md);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.03);
+  transition: transform 0.3s ease, background 0.3s ease;
+  will-change: transform;
+}
+
+.techItem:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.techIconWrapper {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  color: var(--color-text-main);
+}
+
+.techInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.techInfo h4 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.statusWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusText {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.apiSection {
+  margin-top: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

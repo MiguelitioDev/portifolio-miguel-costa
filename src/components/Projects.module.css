@@ -1,0 +1,184 @@
+.section {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.header {
+  position: absolute;
+  top: var(--spacing-xl);
+  left: var(--spacing-md);
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--color-text-main);
+  z-index: 10;
+  mix-blend-mode: difference;
+}
+
+.scrollContainer {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.scrollWrapper {
+  display: flex;
+  width: max-content;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-xl);
+}
+
+.projectCard {
+  width: 85vw;
+  max-width: 900px;
+  height: 70vh;
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardInner {
+  width: 100%;
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+  will-change: transform, box-shadow;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.cardInner:hover {
+  transform: translateY(-10px) scale(0.99);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.cardImagePlaceholder {
+  flex: 1.2;
+  background: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 0%, rgba(15, 17, 21, 0.8) 100%);
+  z-index: 1;
+}
+
+.placeholderText {
+  font-size: 8rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.1);
+  z-index: 0;
+  transition: transform 0.8s ease;
+}
+
+.cardInner:hover .placeholderText {
+  transform: scale(1.1);
+}
+
+.cardContent {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  background: var(--color-bg-dark);
+  position: relative;
+  z-index: 2;
+}
+
+.cardContent h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 500;
+  color: var(--color-text-main);
+  letter-spacing: -0.01em;
+}
+
+.cardContent p {
+  color: var(--color-text-muted);
+  font-weight: 300;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: auto;
+}
+
+.techTag {
+  padding: 4px 12px;
+  background: var(--color-blue-glow);
+  border: 1px solid rgba(139, 178, 248, 0.2);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.cardActions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.actionBtn, .actionBtnPrimary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.actionBtn {
+  background: transparent;
+  color: var(--color-text-main);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.actionBtn:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.4);
+}
+
+.actionBtnPrimary {
+  background: var(--color-text-main);
+  color: var(--color-bg-dark);
+}
+
+.actionBtnPrimary:hover {
+  background: var(--color-accent);
+  box-shadow: 0 4px 20px var(--color-blue-glow);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .projectCard {
+    height: 75vh;
+  }
+  .cardActions {
+    flex-direction: column;
+  }
+}
