@@ -66,38 +66,58 @@ export default function Projects() {
       <h2 className={styles.header}>Projetos</h2>
       <div className={styles.scrollContainer}>
         <div ref={scrollWrapperRef} className={styles.scrollWrapper}>
-          {projects.map((proj, idx) => (
-            <div key={idx} className={styles.projectCard}>
-              <div className={styles.cardInner}>
-                <div className={styles.cardImagePlaceholder}>
-                   <div className={styles.imageOverlay}></div>
-                   <span className={styles.placeholderText}>{proj.title.charAt(0)}</span>
-                </div>
-                
-                <div className={styles.cardContent}>
-                  <h3>{proj.title}</h3>
-                  <p>{proj.desc}</p>
-                  
-                  <div className={styles.techList}>
-                    {proj.techs.map((tech, i) => (
-                      <span key={i} className={styles.techTag}>{tech}</span>
-                    ))}
+          {projects.map((proj, idx) => {
+            const isComingSoon = proj.githubUrl === "#" || proj.demoUrl === "#" || !proj.githubUrl || !proj.demoUrl;
+            
+            return (
+              <div key={idx} className={styles.projectCard}>
+                <div className={styles.cardInner}>
+                  <div className={styles.cardImagePlaceholder}>
+                     <div className={styles.imageOverlay}></div>
+                     <span className={styles.placeholderText}>{proj.title.charAt(0)}</span>
+                     {isComingSoon && <div className={styles.comingSoonTag}>Em Breve Nessa Semana</div>}
                   </div>
+                  
+                  <div className={styles.cardContent}>
+                    <h3>{proj.title}</h3>
+                    <p>{proj.desc}</p>
+                    
+                    <div className={styles.techList}>
+                      {proj.techs.map((tech, i) => (
+                        <span key={i} className={styles.techTag}>{tech}</span>
+                      ))}
+                    </div>
 
-                  <div className={styles.cardActions}>
-                    <a href={proj.githubUrl} target="_blank" rel="noreferrer" className={styles.actionBtn}>
-                      <FaGithub size={20} />
-                      <span>Código</span>
-                    </a>
-                    <a href={proj.demoUrl} target="_blank" rel="noreferrer" className={styles.actionBtnPrimary}>
-                      <ExternalLink size={20} />
-                      <span>Ver Projeto</span>
-                    </a>
+                    <div className={styles.cardActions}>
+                      {isComingSoon ? (
+                        <>
+                          <div className={styles.disabledBtn}>
+                            <FaGithub size={20} />
+                            <span>Código em breve</span>
+                          </div>
+                          <div className={`${styles.disabledBtn} ${styles.disabledBtnPrimary}`}>
+                            <ExternalLink size={20} />
+                            <span>Projeto em breve</span>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <a href={proj.githubUrl} target="_blank" rel="noreferrer" className={styles.actionBtn}>
+                            <FaGithub size={20} />
+                            <span>Código</span>
+                          </a>
+                          <a href={proj.demoUrl} target="_blank" rel="noreferrer" className={styles.actionBtnPrimary}>
+                            <ExternalLink size={20} />
+                            <span>Ver Projeto</span>
+                          </a>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

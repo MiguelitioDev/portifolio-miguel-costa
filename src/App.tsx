@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
@@ -6,6 +6,7 @@ import Technologies from './components/Technologies';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import InteractiveBackground from './components/InteractiveBackground';
+import Loader from './components/Loader';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
@@ -13,6 +14,8 @@ import Lenis from 'lenis';
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     // Lenis Smooth Scroll Setup
     const lenis = new Lenis({
@@ -35,15 +38,18 @@ function App() {
   }, []);
 
   return (
-    <div className="app-container">
-      <InteractiveBackground />
-      <Hero />
-      <About />
-      <Projects />
-      <Technologies />
-      <Contact />
-      <Footer />
-    </div>
+    <>
+      {isLoading && <Loader onComplete={() => setIsLoading(false)} />}
+      <div className="app-container" style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
+        <InteractiveBackground />
+        <Hero />
+        <About />
+        <Projects />
+        <Technologies />
+        <Contact />
+        <Footer />
+      </div>
+    </>
   );
 }
 
