@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import styles from './Hero.module.css';
 import gsap from 'gsap';
 import videoUrl from '../../video/kling_20260801_VIDEO_Voc____um__2717_0.mp4';

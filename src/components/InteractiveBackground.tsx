@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import styles from './InteractiveBackground.module.css';
 
 export default function InteractiveBackground() {

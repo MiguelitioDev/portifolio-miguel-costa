@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import styles from './About.module.css';
 import gsap from 'gsap';
 import fotoPerfil from '../foto/perfil.webp';
