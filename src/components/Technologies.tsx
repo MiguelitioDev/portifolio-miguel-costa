@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import styles from './Technologies.module.css';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Code2, Database, Layout, Server, Box, Sparkles, Terminal, FileJson, Globe } from 'lucide-react';
+import { Code2, Database, Layout, Server, Box, Sparkles, Terminal, FileJson, Globe, Cpu } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,15 +16,16 @@ export default function Technologies() {
   ];
 
   const technologies = [
-    { name: "JavaScript", status: 0, icon: <Terminal size={24} /> },
-    { name: "Python", status: 1, icon: <Code2 size={24} /> },
-    { name: "HTML", status: 0, icon: <Layout size={24} /> },
-    { name: "CSS", status: 0, icon: <Layout size={24} /> },
-    { name: "React", status: 0, icon: <Globe size={24} /> },
-    { name: "Node.js", status: 0, icon: <Server size={24} /> },
-    { name: "Express.js", status: 0, icon: <Server size={24} /> },
-    { name: "Three.js", status: 0, icon: <Box size={24} /> },
-    { name: "Inteligência Artificial", status: 0, icon: <Sparkles size={24} /> },
+    { name: "React 18", icon: <Layout size={24} />, category: "Frontend", status: 0 },
+    { name: "TypeScript", icon: <Code2 size={24} />, category: "Linguagem", status: 0 },
+    { name: "Tailwind CSS", icon: <Box size={24} />, category: "Estilização", status: 0 },
+    { name: "Vite", icon: <Cpu size={24} />, category: "Build Tool", status: 0 },
+    { name: "Zustand", icon: <Database size={24} />, category: "State Management", status: 0 },
+    { name: "IndexedDB", icon: <Database size={24} />, category: "Armazenamento", status: 1 },
+    { name: "React Router v6", icon: <FileJson size={24} />, category: "Roteamento", status: 0 },
+    { name: "Node.js", icon: <Server size={24} />, category: "Backend", status: 1 },
+    { name: "Python", icon: <Terminal size={24} />, category: "IA / Scripting", status: 1 },
+    { name: "APIs REST / IA", icon: <Sparkles size={24} />, category: "Integração", status: 0 }
   ];
 
   const apis = [

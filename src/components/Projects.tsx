@@ -3,6 +3,7 @@ import styles from './Projects.module.css';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ExternalLink } from 'lucide-react';
+import nexserveImg from '../foto/nexserve.png';
 import { FaGithub } from 'react-icons/fa';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -12,33 +13,45 @@ export default function Projects() {
   const scrollWrapperRef = useRef<HTMLDivElement>(null);
 
   const projects = [
-    { 
-      title: "Protótipo RestaurantSystem", 
-      desc: "Um sistema completo para gerenciamento de restaurantes, otimizando pedidos, estoque e atendimento com foco em usabilidade.", 
-      techs: ["React", "Node.js", "Express"],
-      githubUrl: "#",
-      demoUrl: "#"
+    {
+      id: 1,
+      title: 'NexServe ERP',
+      category: 'SaaS / ERP',
+      description: 'Sistema comercial robusto para restaurantes. Simula backend em nuvem usando IndexedDB e Zustand, oferecendo performance ultrarrápida, escalabilidade e gestão de PDV.',
+      tags: ['React 18', 'TypeScript', 'Tailwind', 'Zustand', 'IndexedDB'],
+      demoUrl: 'https://nexserve-erp.vercel.app/login',
+      githubUrl: 'https://github.com/MiguelitioDev/nexserve-erp/tree/main',
+      imageUrl: nexserveImg,
     },
-    { 
-      title: "Controle de Gastos com Chatbot e Digitalizador de Notas", 
-      desc: "Plataforma financeira inteligente que utiliza IA para leitura de notas fiscais e chatbot para insights de economia.", 
-      techs: ["Python", "React", "IA"],
-      githubUrl: "#",
-      demoUrl: "#"
+    {
+      id: 2,
+      title: 'Fintech Dashboard',
+      category: 'Web App',
+      description: 'Painel financeiro interativo focado em visualização de dados e análise preditiva.',
+      tags: ['React', 'TypeScript', 'Framer Motion', 'Recharts'],
+      demoUrl: '#',
+      githubUrl: '#',
+      imageUrl: '',
     },
-    { 
-      title: "To Do List Universitário", 
-      desc: "Aplicativo de produtividade adaptado para a rotina acadêmica, ajudando estudantes a organizarem provas, trabalhos e aulas.", 
-      techs: ["HTML", "CSS", "JavaScript"],
-      githubUrl: "#",
-      demoUrl: "#"
+    {
+      id: 3,
+      title: 'E-commerce Premium',
+      category: 'E-commerce',
+      description: 'Plataforma de vendas com transições fluidas e carrinho persistente.',
+      tags: ['Next.js', 'Stripe', 'Tailwind', 'Zustand'],
+      demoUrl: '#',
+      githubUrl: '#',
+      imageUrl: '',
     },
-    { 
-      title: "Loja Digital Tech", 
-      desc: "E-commerce moderno e responsivo com carrinho dinâmico, integração de pagamentos e interface imersiva em 3D.", 
-      techs: ["Next.js", "Three.js", "Tailwind"],
-      githubUrl: "#",
-      demoUrl: "#"
+    {
+      id: 4,
+      title: 'AI Generator',
+      category: 'Inteligência Artificial',
+      description: 'Interface geradora de imagens conectada a modelos de difusão de ponta.',
+      tags: ['React', 'Node.js', 'OpenAI', 'CSS Modules'],
+      demoUrl: '#',
+      githubUrl: '#',
+      imageUrl: '',
     }
   ];
 
@@ -72,19 +85,25 @@ export default function Projects() {
             return (
               <div key={idx} className={styles.projectCard}>
                 <div className={styles.cardInner}>
-                  <div className={styles.cardImagePlaceholder}>
-                     <div className={styles.imageOverlay}></div>
-                     <span className={styles.placeholderText}>{proj.title.charAt(0)}</span>
-                     {isComingSoon && <div className={styles.comingSoonTag}>Em Breve Nessa Semana</div>}
+                  <div className={styles.cardImageContainer}>
+                    {proj.imageUrl ? (
+                      <img src={proj.imageUrl} alt={proj.title} className={styles.cardImage} />
+                    ) : (
+                      <div className={styles.cardImagePlaceholder}>
+                        <div className={styles.imageOverlay}></div>
+                        <span className={styles.placeholderText}>{proj.title.charAt(0)}</span>
+                      </div>
+                    )}
+                    {isComingSoon && <div className={styles.comingSoonTag}>Em Breve Nessa Semana</div>}
                   </div>
                   
                   <div className={styles.cardContent}>
                     <h3>{proj.title}</h3>
-                    <p>{proj.desc}</p>
+                    <p>{proj.description}</p>
                     
                     <div className={styles.techList}>
-                      {proj.techs.map((tech, i) => (
-                        <span key={i} className={styles.techTag}>{tech}</span>
+                      {proj.tags.map((tag, i) => (
+                        <span key={i} className={styles.techTag}>{tag}</span>
                       ))}
                     </div>
 
