@@ -61,8 +61,28 @@
   border-color: rgba(255,255,255,0.1);
 }
 
-.cardImagePlaceholder {
+.cardImageContainer {
   flex: 1.2;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  background: var(--color-secondary);
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.cardInner:hover .cardImage {
+  transform: scale(1.05);
+}
+
+.cardImagePlaceholder {
+  width: 100%;
+  height: 100%;
   background: var(--color-secondary);
   display: flex;
   align-items: center;
