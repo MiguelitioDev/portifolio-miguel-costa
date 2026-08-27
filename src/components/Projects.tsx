@@ -3,7 +3,6 @@ import styles from './Projects.module.css';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ExternalLink } from 'lucide-react';
-import nexserveImg from '../foto/nexserve.png';
 import { FaGithub } from 'react-icons/fa';
 
 gsap.registerPlugin(ScrollTrigger);
