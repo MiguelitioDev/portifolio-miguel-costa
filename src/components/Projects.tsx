@@ -19,9 +19,9 @@ export default function Projects() {
       category: 'SaaS / ERP',
       description: 'Sistema comercial robusto para restaurantes. Simula backend em nuvem usando IndexedDB e Zustand, oferecendo performance ultrarrápida, escalabilidade e gestão de PDV.',
       tags: ['React 18', 'TypeScript', 'Tailwind', 'Zustand', 'IndexedDB'],
-      demoUrl: 'https://nexserve-erp.vercel.app/login',
-      githubUrl: 'https://github.com/MiguelitioDev/nexserve-erp/tree/main',
-      imageUrl: nexserveImg,
+      demoUrl: '',
+      githubUrl: '',
+      imageUrl: ''
     },
     {
       id: 2,
@@ -81,7 +81,7 @@ export default function Projects() {
         <div ref={scrollWrapperRef} className={styles.scrollWrapper}>
           {projects.map((proj, idx) => {
             const isComingSoon = proj.githubUrl === "#" || proj.demoUrl === "#" || !proj.githubUrl || !proj.demoUrl;
-            
+
             return (
               <div key={idx} className={styles.projectCard}>
                 <div className={styles.cardInner}>
@@ -96,11 +96,11 @@ export default function Projects() {
                     )}
                     {isComingSoon && <div className={styles.comingSoonTag}>Em Breve Nessa Semana</div>}
                   </div>
-                  
+
                   <div className={styles.cardContent}>
                     <h3>{proj.title}</h3>
                     <p>{proj.description}</p>
-                    
+
                     <div className={styles.techList}>
                       {proj.tags.map((tag, i) => (
                         <span key={i} className={styles.techTag}>{tag}</span>
