@@ -1,116 +1,152 @@
-.section {
-  padding: var(--spacing-xxl) var(--spacing-md);
+.aboutSection {
+  padding-top: var(--section-spacing);
+  padding-bottom: var(--section-spacing);
   position: relative;
-  z-index: 10;
-  color: var(--color-text-main);
+  background-color: var(--color-bg-base);
+  border-top: 1px solid var(--color-border);
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
+.grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: var(--spacing-xl);
+  grid-template-columns: 420px 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
   align-items: center;
 }
 
-.leftColumn {
+.imageCol {
   position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.imageWrapper {
-  width: 100%;
-  height: 100%;
+.imageFrame {
   position: relative;
-  border-radius: 20px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  /* Máscara suave apenas nas bordas extremas */
-  mask-image: radial-gradient(circle at center, black 60%, transparent 95%);
-  -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 95%);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-surface);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-.photoPlaceholder {
+.profileImage {
   width: 100%;
-  height: 100%;
-  background: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop') center/cover;
-  transition: transform 0.4s ease;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.05) brightness(0.95);
+  transition: transform var(--transition-smooth), filter var(--transition-smooth);
 }
 
-/* Um gradiente bem suave apenas para a parte inferior */
-.photoOverlay {
+.imageFrame:hover .profileImage {
+  transform: scale(1.02);
+  filter: contrast(1.08) brightness(1);
+}
+
+.imageOverlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, transparent 50%, var(--color-bg-dark) 100%);
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 11, 14, 0.8) 0%, transparent 60%);
+  pointer-events: none;
 }
 
-.rightColumn {
+.imageBadge {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  padding: 0.85rem 1rem;
+  background: rgba(17, 20, 28, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
 }
 
-.title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 400;
+.badgeTitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-sm);
   color: var(--color-text-main);
-  letter-spacing: -0.02em;
 }
 
-.textContent {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  color: var(--color-text-muted);
-  font-size: 1.125rem;
-  line-height: 1.6;
-  font-weight: 300;
-}
-
-.textContent p {
-  margin: 0;
-}
-
-.infoBlock {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  padding-top: var(--spacing-md);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.infoItem {
-  display: flex;
-  gap: var(--spacing-sm);
-  font-size: 1rem;
-}
-
-.infoLabel {
+.badgeSubtitle {
+  font-size: var(--text-xs);
   color: var(--color-accent);
-  font-weight: 500;
-  min-width: 90px;
 }
 
-.infoValue {
+.contentCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.bioParagraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.bioParagraphs strong {
   color: var(--color-text-main);
-  font-weight: 300;
+  font-weight: 600;
 }
 
-@media (max-width: 900px) {
-  .container {
+.metadataGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.metaItem {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: border-color var(--transition-fast);
+}
+
+.metaItem:hover {
+  border-color: var(--color-border-hover);
+}
+
+.metaLabel {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metaValue {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+@media (max-width: 960px) {
+  .grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+    gap: 2.5rem;
   }
-  
-  .leftColumn {
-    max-width: 400px;
+  .imageCol {
+    max-width: 420px;
     margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .metadataGrid {
+    grid-template-columns: 1fr;
   }
 }

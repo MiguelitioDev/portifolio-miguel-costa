@@ -1,38 +1,32 @@
-import { useRef, useEffect } from 'react';
 import styles from './Footer.module.css';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { ArrowUp } from 'lucide-react';
 
 export default function Footer() {
-  const footerRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    if (!footerRef.current) return;
-    
-    gsap.fromTo(footerRef.current, 
-      { opacity: 0 },
-      {
-        opacity: 1, 
-        duration: 1.5, 
-        ease: "power2.inOut",
-        scrollTrigger: {
-          trigger: footerRef.current,
-          start: "top 95%"
-        }
-      }
-    );
-  }, []);
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
-    <footer ref={footerRef} className={styles.footer}>
-      <div className={styles.container}>
-        <p className={styles.text}>© 2026 Pedro Miguel Moreira da Costa</p>
-        <div className={styles.divider}></div>
-        <p className={styles.text}>Análise e Desenvolvimento de Sistemas</p>
-        <div className={styles.divider}></div>
-        <p className={styles.text}>Todos os direitos reservados.</p>
+    <footer className={styles.footer} role="contentinfo">
+      <div className={`site-container ${styles.inner}`}>
+        <div className={styles.leftCol}>
+          <p className={styles.copyright}>
+            © {new Date().getFullYear()} Pedro Miguel Moreira da Costa. Todos os direitos reservados.
+          </p>
+          <p className={styles.education}>
+            Graduando em Análise e Desenvolvimento de Sistemas · Ceará, Brasil
+          </p>
+        </div>
+
+        <button
+          type="button"
+          onClick={scrollToTop}
+          className={styles.backToTop}
+          aria-label="Voltar ao topo da página"
+        >
+          <span>Voltar ao topo</span>
+          <ArrowUp size={14} aria-hidden="true" />
+        </button>
       </div>
     </footer>
   );

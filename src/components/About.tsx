@@ -1,72 +1,72 @@
-import { useRef, useEffect } from 'react';
 import styles from './About.module.css';
-import gsap from 'gsap';
-import fotoPerfil from '../foto/perfil.webp';
+import { useScrollReveal } from '../hooks/useScrollReveal';
+import fotoPerfil from '../foto/perfil-optimized.jpg';
 
 export default function About() {
-  const containerRef = useRef<HTMLElement>(null);
-  
-  useEffect(() => {
-    if (!containerRef.current) return;
-    
-    gsap.fromTo(containerRef.current, 
-      { opacity: 0, y: 50 },
-      { 
-        opacity: 1, 
-        y: 0, 
-        duration: 1, 
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 75%"
-        }
-      }
-    );
-  }, []);
+  const sectionRef = useScrollReveal<HTMLElement>();
 
   return (
-    <section ref={containerRef} className={styles.section}>
-      <div className={styles.container}>
-        <div className={styles.leftColumn}>
-          <div className={styles.imageWrapper}>
-            {/* O placeholder da imagem que utilizará blend modes e máscara de opacidade */}
-            <div className={styles.photoPlaceholder} style={{ backgroundImage: `url(${fotoPerfil})` }}>
-              <div className={styles.photoOverlay}></div>
+    <section ref={sectionRef} id="sobre" className={`${styles.aboutSection} reveal-on-scroll`} aria-label="Sobre mim">
+      <div className={`site-container ${styles.grid}`}>
+        <div className={styles.imageCol}>
+          <div className={styles.imageFrame}>
+            <img
+              src={fotoPerfil}
+              alt="Pedro Miguel Moreira da Costa"
+              width={600}
+              height={750}
+              loading="lazy"
+              className={styles.profileImage}
+            />
+            <div className={styles.imageOverlay} />
+            <div className={styles.imageBadge}>
+              <span className={styles.badgeTitle}>Pedro Miguel Moreira da Costa</span>
+              <span className={styles.badgeSubtitle}>Desenvolvedor Web Fullstack</span>
             </div>
           </div>
         </div>
-        
-        <div className={styles.rightColumn}>
-          <h2 className={styles.title}>Resumo Profissional</h2>
-          
-          <div className={styles.textContent}>
+
+        <div className={styles.contentCol}>
+          <div>
+            <span className="section-tag">Trajetória & Perfil</span>
+            <h2 className="section-title">Engenharia sólida com acabamento visual apurado.</h2>
+          </div>
+
+          <div className={styles.bioParagraphs}>
             <p>
-              Sou um desenvolvedor focado em criar soluções web que unem performance e uma estética refinada. 
-              Ao longo do meu desenvolvimento em projetos reais, percebi que a verdadeira inovação está na interseção 
-              entre engenharia sólida e a Inteligência Artificial.
+              Sou desenvolvedor focado em construir interfaces que combinam <strong>rigor de engenharia</strong>, 
+              <strong>performance máxima</strong> e uma <strong>estética editorial diferenciada</strong>. Desenvolvo aplicações 
+              web completas, desde a arquitetura de estado até a interação final no navegador.
             </p>
             <p>
-              Tenho aplicado conceitos de IA durante o meu ciclo de desenvolvimento, não apenas para otimizar fluxos 
-              de trabalho, mas também para construir funcionalidades mais inteligentes e preditivas para o usuário final.
+              Minha formação em <strong>Análise e Desenvolvimento de Sistemas</strong> me dá a base sólida para pensar 
+              em modelagem de dados, componentização escalável e boas práticas de código. Ao mesmo tempo, atuo 
+              ativamente na criação de produtos comerciais reais, entregando sites e protótipos que geram valor direto 
+              para clientes.
             </p>
             <p>
-              Minha jornada é marcada pelo aprendizado contínuo. Busco sempre a evolução profissional, adotando 
-              tecnologias modernas e aprimorando minhas capacidades técnicas para entregar produtos escaláveis, 
-              acessíveis e que geram impacto real.
+              Acredito que o verdadeiro diferencial de um produto digital está no cuidado com os detalhes: 
+              tempo de resposta instantâneo, acessibilidade nativa, tipografia legível e adaptação impecável em telas 
+              de qualquer tamanho.
             </p>
           </div>
 
-          <div className={styles.infoBlock}>
-            <div className={styles.infoItem}>
-              <span className={styles.infoLabel}>Nome:</span>
-              <span className={styles.infoValue}>Pedro Miguel Moreira da Costa</span>
+          <div className={styles.metadataGrid}>
+            <div className={styles.metaItem}>
+              <span className={styles.metaLabel}>Formação Acadêmica</span>
+              <span className={styles.metaValue}>Análise e Desenv. de Sistemas (3º Semestre)</span>
             </div>
-            <div className={styles.infoItem}>
-              <span className={styles.infoLabel}>Matrícula:</span>
-              <span className={styles.infoValue}>2522696</span>
+            <div className={styles.metaItem}>
+              <span className={styles.metaLabel}>Especialidade</span>
+              <span className={styles.metaValue}>Frontend Moderno & Soluções Web</span>
             </div>
-            <div className={styles.infoItem}>
-              <span className={styles.infoLabel}>Semestre:</span>
-              <span className={styles.infoValue}>3º</span>
+            <div className={styles.metaItem}>
+              <span className={styles.metaLabel}>Localização</span>
+              <span className={styles.metaValue}>Ceará, Brasil (Remoto / Presencial)</span>
+            </div>
+            <div className={styles.metaItem}>
+              <span className={styles.metaLabel}>Disponibilidade</span>
+              <span className={styles.metaValue}>Projetos Freelance & Oportunidades</span>
             </div>
           </div>
         </div>

@@ -1,126 +1,202 @@
-.section {
-  padding: var(--spacing-xxl) var(--spacing-md);
+.contactSection {
+  padding-top: var(--section-spacing);
+  padding-bottom: var(--section-spacing);
   position: relative;
-  z-index: 10;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  background-color: var(--color-bg-base);
+  border-top: 1px solid var(--color-border);
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xl);
-  align-items: center;
-  text-align: center;
+.headerArea {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
-.title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 400;
-  color: var(--color-text-main);
-  letter-spacing: -0.02em;
-  margin-bottom: var(--spacing-md);
-}
-
-.subtitle {
-  font-size: 1.25rem;
-  color: var(--color-text-muted);
-  max-width: 600px;
-  margin: 0 auto;
-  font-weight: 300;
-}
-
-.grid {
+.contactLayout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--spacing-lg);
-  width: 100%;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: stretch;
 }
 
-.contactCard {
-  position: relative;
+/* Primary WhatsApp Highlight Card */
+.primaryCard {
+  background: linear-gradient(145deg, #131722 0%, #0d1017 100%);
+  border: 1px solid rgba(139, 178, 248, 0.25);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 4vw, 3rem);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-md);
-  padding: var(--spacing-xl) var(--spacing-md);
-  background: var(--color-primary);
-  border-radius: 24px;
-  text-decoration: none;
+  justify-content: space-between;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.03);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
-  will-change: transform;
 }
 
-.contactCard:hover {
-  transform: translateY(-10px);
-  border-color: rgba(255,255,255,0.1);
-}
-
-.iconWrapper {
-  width: 70px;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255,255,255,0.05);
-  border-radius: 50%;
-  color: var(--color-text-main);
-  transition: transform 0.4s ease, background 0.4s ease;
-  z-index: 2;
-}
-
-.contactCard:hover .iconWrapper {
-  transform: scale(1.1);
-  background: var(--color-text-main);
-  color: var(--color-bg-dark);
-}
-
-.cardContent {
-  z-index: 2;
-}
-
-.cardContent h3 {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--color-text-main);
-  margin-bottom: 4px;
-}
-
-.cardContent p {
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
-  transition: color 0.3s ease;
-}
-
-.contactCard:hover .cardContent p {
-  color: var(--color-accent);
-}
-
-/* Efeito Premium de Brilho Fundo */
-.cardGlow {
+.primaryCard::after {
+  content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 150px;
-  height: 150px;
-  background: radial-gradient(circle, var(--color-blue-glow) 0%, transparent 70%);
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-  transition: transform 0.6s ease, opacity 0.6s ease;
-  z-index: 1;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(139, 178, 248, 0.12) 0%, transparent 70%);
   pointer-events: none;
 }
 
-.contactCard:hover .cardGlow {
-  transform: translate(-50%, -50%) scale(2);
-  opacity: 1;
+.primaryHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-@media (max-width: 768px) {
-  .grid {
+.primaryBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-accent-emerald);
+  background: var(--color-accent-emerald-subtle);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-full);
+  width: fit-content;
+}
+
+.pulseGreen {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent-emerald);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+}
+
+.primaryTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.primaryDescription {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.primaryActionBox {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.whatsAppBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  color: #0a0b0e;
+  font-weight: 700;
+  font-size: var(--text-base);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 20px rgba(139, 178, 248, 0.3);
+  min-height: 52px;
+}
+
+.whatsAppBtn:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(139, 178, 248, 0.45);
+}
+
+.phoneDetail {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-dim);
+  text-align: center;
+}
+
+/* Secondary Channels Grid */
+.secondaryGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.channelCard {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  min-height: 72px;
+}
+
+.channelCard:hover {
+  background: var(--color-bg-surface-hover);
+  border-color: var(--color-border-hover);
+  transform: translateX(4px);
+}
+
+.channelIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  flex-shrink: 0;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.channelCard:hover .channelIcon {
+  color: #ffffff;
+  border-color: var(--color-accent);
+}
+
+.channelContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.channelName {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.channelDetail {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  word-break: break-all;
+}
+
+.channelArrow {
+  color: var(--color-text-dim);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.channelCard:hover .channelArrow {
+  color: var(--color-accent);
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 860px) {
+  .contactLayout {
     grid-template-columns: 1fr;
   }
 }
